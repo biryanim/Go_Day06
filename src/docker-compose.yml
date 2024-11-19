@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:17
+    container_name: myblogdb
+    environment:
+      POSTGRES_DB: myblogdb
+      POSTGRES_USER: mybloguser
+      POSTGRES_PASSWORD: mydbpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - myblog_data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  myblog_data:
+    driver: local
